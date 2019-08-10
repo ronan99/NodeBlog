@@ -1,0 +1,28 @@
+<h3>Lista de Posts</h3>
+<hr>
+<a href="/admin/posts/add"><button class="btn btn-success mt-4">Nova Postagem</button></a>
+
+{{#each posts}}
+<div class="card mt-4" style="width:50%;">
+    <div class="card-body">
+        <h4 class="card-title">Título: {{titulo}}</h4>
+        <small><b>Descrição:</b> {{descricao}}</small> <br>
+        <small><b>Categoria:</b> {{categoria.nome}}</small><br>
+        <small><b>Slug:</b> {{slug}}</small>
+        
+        <p class="card-text"><b>Conteúdo: </b>{{conteudo}}</p>
+
+        <small class="data date-{{id}}"></small>
+        <script>
+                document.querySelector('.date-{{id}}').innerHTML ="<b>Data de Criação:</b> "+ new Date('{{date}}').toLocaleDateString();
+            </script><br>
+
+        <a href="/admin/posts/edit/{{_id}}"> <button class="btn btn-success mt-2">Editar</button></a>
+
+    </div>
+</div>
+    
+
+{{else}}
+    <h4 class="mt-4">Nenhuma Postagem registrada.</h4>
+{{/each}}
